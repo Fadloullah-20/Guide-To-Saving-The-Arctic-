@@ -13,7 +13,7 @@ let maxHeight = 0; // height of sky
 let jumpCounter = 0; // keeps track of how much we are jumping
 let jumpWatch=0; //how many times jump is true
 let barrier; // stops character from falling through stuff
-let state = 1;
+let state = 22;
 let dy;
 let iceS;
 px = 150;
@@ -87,7 +87,7 @@ function resetSketch(){
     ground.addImage(loadImage('assets/ground.png')); // replace with water 
 
     // baby cub sprite
-    baby = createSprite(985, 278, 20, 20);
+    baby = createSprite(845, 208, 20, 20);
 
     baby.addImage(loadImage('assets/prime.png'));
     
@@ -120,6 +120,12 @@ function draw() {
     //console.log(bear.collide(ice));
     // start screen
     console.log(state)
+    function mouse() {
+        background(255, 255, 255);
+        ellipse(mouseX, mouseY, 5, 5); 
+      var hello = mouseX + ", " +mouseY;
+      text( hello, mouseX, mouseY);
+    };
     function world(){
         if(state==3||state==6||state==8||state==10||state==12||state==14||state==16||state==18||state==20){
             baby.removed=true;
@@ -495,7 +501,7 @@ function draw() {
         bear.debug = false// mouseIsPressed;
         ice.debug = false//mouseIsPressed;
         for(let i=0; i<6; i++){
-        iceT[i].debug = false//mouseIsPressed;
+        iceT[i].debug = true//mouseIsPressed;
         }
         for(let i=0; i<6; i++){
           iceB[i].debug = false//mouseIsPressed;
@@ -784,61 +790,65 @@ function draw() {
 
        iceT[0].position.x=221;
        iceT[0].position.y=361;
-       iceT[1].position.x=844;
-       iceT[1].position.y=372;
-       iceT[2].position.x=677;
-       iceT[2].position.y=405;
+       iceT[1].position.x=691;
+       iceT[1].position.y=290;
+       iceT[2].position.x=308;
+       iceT[2].position.y=198;
        iceT[3].position.x=885;
        iceT[3].position.y=379;
-       iceT[4].position.x=688;
-       iceT[4].position.y=434;
-       iceT[5].position.x=912;
-       iceT[5].position.y=256;
+       iceT[4].position.x=422;
+       iceT[4].position.y=117;
+       iceT[5].position.x=808;
+       iceT[5].position.y=252;
 
        //top 
        iceD[6].position.x=221;
        iceD[6].position.y=371;
-       iceD[7].position.x=844;
-       iceD[7].position.y=382;
-       iceD[8].position.x=677;
-       iceD[8].position.y=415;
+       iceD[7].position.x=691;
+       iceD[7].position.y=300;
+       iceD[8].position.x=308;
+       iceD[8].position.y=208;
        iceD[9].position.x=885;
        iceD[9].position.y=389;
-       iceD[10].position.x=688;
-       iceD[10].position.y=444;
-       iceD[11].position.x=912;
-       iceD[11].position.y=266;
+       iceD[10].position.x=422;
+       iceD[10].position.y=127;
+       iceD[11].position.x=808;
+       iceD[11].position.y=262;
 
-       iceB[0].position.x=204;
-       iceB[0].position.y=480;
-       iceB[1].position.x=665;
-       iceB[1].position.y=431;
-       iceB[2].position.x=802;
-       iceB[2].position.y=318;
-       iceB[3].position.x=781;
-       iceB[3].position.y=308;
+       iceB[0].position.x=375;
+       iceB[0].position.y=426;
+       iceB[1].position.x=546;
+       iceB[1].position.y=336;
+       iceB[2].position.x=874;
+       iceB[2].position.y=152;
+       iceB[3].position.x=674;
+       iceB[3].position.y=137;
        iceB[4].position.x=334;
        iceB[4].position.y=288;
-       iceB[5].position.x=449;
-       iceB[5].position.y=526;
+       iceB[5].position.x=534;
+       iceB[5].position.y=206;
 
        //bottom
-       iceD[0].position.x=204;
-       iceD[0].position.y=490;
-       iceD[1].position.x=665;
-       iceD[1].position.y=441;
-       iceD[2].position.x=802;
-       iceD[2].position.y=328;
-       iceD[3].position.x=781;
-       iceD[3].position.y=318;
+       iceD[0].position.x=375;
+       iceD[0].position.y=436;
+       iceD[1].position.x=546;
+       iceD[1].position.y=346;
+       iceD[2].position.x=874;
+       iceD[2].position.y=162;
+       iceD[3].position.x=674;
+       iceD[3].position.y=147;
        iceD[4].position.x=334;
        iceD[4].position.y=298;
-       iceD[5].position.x=449;
-       iceD[5].position.y=536;
+       iceD[5].position.x=534;
+       iceD[5].position.y=216;
       
 
    }
+   next.position.x=886;
+   next.position.y=363;
+//   mouse();
    iceP1();
+  // debug();
    meltingIce();  
    drawSprites();    
    // }
@@ -2418,25 +2428,25 @@ drawSprites();
        life9();
        
    }
-   if (bear.collide(next)) {
-       state = 5;
-       heart = 3;
-       heart1.visible = true;
-       heart2.visible = true;
-       heart3.visible = true;
-       for(let i=0; i<6; i++){
-           iceT[i].removed = true//mouseIsPressed;
-           }
-           for(let i=0; i<6; i++){
-             iceB[i].removed = true//mouseIsPressed;
-             }
-             for(let i=0; i<12; i++){
-                 iceD[i].removed = true//mouseIsPressed;
-             }
-             resetIce();
-             px=150;
-             py=25;
-   }
+   if (bear.collide(baby)) {
+    state = 5;
+    heart = 3;
+    heart1.visible = true;
+    heart2.visible = true;
+    heart3.visible = true;
+    for(let i=0; i<6; i++){
+        iceT[i].removed = true//mouseIsPressed;
+        }
+        for(let i=0; i<6; i++){
+          iceB[i].removed = true//mouseIsPressed;
+          }
+          for(let i=0; i<12; i++){
+              iceD[i].removed = true//mouseIsPressed;
+          }
+          resetIce();
+          px=150;
+          py=25;
+}
    if(bear.collide(iceT)){
      //  py -= barrier;
        //py+=6;
@@ -2490,34 +2500,34 @@ drawSprites();
 }
     function iceP9() {
 
-    iceT[0].position.x=620;
+    iceT[0].position.x=1620;
     iceT[0].position.y=507;
     iceT[1].position.x=556;
     iceT[1].position.y=403;
-    iceT[2].position.x=517;
-    iceT[2].position.y=322;
+    iceT[2].position.x=300;
+    iceT[2].position.y=124;
     iceT[3].position.x=844;
     iceT[3].position.y=222;
-    iceT[4].position.x=303;
-    iceT[4].position.y=470;
+    iceT[4].position.x=348;
+    iceT[4].position.y=241;
     iceT[5].position.x=750;
-    iceT[5].position.y=546;
+    iceT[5].position.y=285;
 
     //top 
-    iceD[6].position.x=620;
+    iceD[6].position.x=1620;
     iceD[6].position.y=517;
     iceD[7].position.x=556;
     iceD[7].position.y=413;
-    iceD[8].position.x=517;
-    iceD[8].position.y=332;
+    iceD[8].position.x=300;
+    iceD[8].position.y=134;
     iceD[9].position.x=844;
     iceD[9].position.y=232;
-    iceD[10].position.x=303;
-    iceD[10].position.y=480;
+    iceD[10].position.x=348;
+    iceD[10].position.y=251;
     iceD[11].position.x=750;
-    iceD[11].position.y=556;
+    iceD[11].position.y=295;
 
-    iceB[0].position.x=674;
+    iceB[0].position.x=1200;
     iceB[0].position.y=391;
     iceB[1].position.x=530;
     iceB[1].position.y=261;
@@ -2531,7 +2541,7 @@ drawSprites();
     iceB[5].position.y=401;
 
     //bottom
-    iceD[0].position.x=674;
+    iceD[0].position.x=1200;
     iceD[0].position.y=401;
     iceD[1].position.x=530;
     iceD[1].position.y=271;
@@ -2543,11 +2553,13 @@ drawSprites();
     iceD[4].position.y=337;
     iceD[5].position.x=390;
     iceD[5].position.y=411;
-    
+        
 
 }
 next.position.x;
 next.position.y;
+//debug();
+//mouse();
 iceP9();
 meltingIce();  
 drawSprites();    
