@@ -13,7 +13,7 @@ let maxHeight = 0; // height of sky
 let jumpCounter = 0; // keeps track of how much we are jumping
 let jumpWatch=0; //how many times jump is true
 let barrier; // stops character from falling through stuff
-let state = 22;
+let state = 1;
 let dy;
 let iceS;
 px = 150;
